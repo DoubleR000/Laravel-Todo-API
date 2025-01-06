@@ -24,7 +24,7 @@ class AuthController extends Controller
             'message' => 'User successfully registered!',
             'user' => $user,
             'token' => $token->plainTextToken
-        ]);
+        ], 201);
     }
     public function login(LoginUserRequest $request)
     {
