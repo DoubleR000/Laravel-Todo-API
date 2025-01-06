@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\LoginUserRequest;
 use App\Http\Requests\RegisterUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -26,7 +25,7 @@ class AuthController extends Controller
             'token' => $token->plainTextToken
         ], 201);
     }
-    public function login(LoginUserRequest $request)
+    public function login(Request $request)
     {
         $user = User::where('email', $request->email)->first();
 
