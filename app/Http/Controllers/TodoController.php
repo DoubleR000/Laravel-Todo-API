@@ -9,7 +9,7 @@ use App\Http\Requests\UpdateTodoRequest;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controllers\HasMiddleware;
 use Illuminate\Routing\Controllers\Middleware;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class TodoController extends Controller implements HasMiddleware
 {
@@ -56,9 +56,16 @@ class TodoController extends Controller implements HasMiddleware
     {
         if (!auth('sanctum')->check()) {
             return response()->json([
-                "message" => "Unauthorized action."
+                "message" => "Unauthenticated."
             ], 401);
         }
+
+        if (!auth('sanctum')->user()->can('view', $todo)) {
+            return response()->json([
+                "message" => "Unauthorized action.",
+            ], 401);
+        }
+
         return response()->json($todo);
     }
 
