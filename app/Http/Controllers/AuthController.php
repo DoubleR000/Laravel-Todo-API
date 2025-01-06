@@ -18,7 +18,7 @@ class AuthController extends Controller
 
         $user = User::create($data);
 
-        $token = $user->createToken($request->name);
+        $token = $user->createToken('Auth Token');
 
         return response()->json([
             'message' => 'User successfully registered!',
@@ -36,7 +36,8 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $request->user()->createToken($request->name);
+        $token = $user->createToken('Auth Token');
+
         return response()->json([
             'message' => 'You have successfully logged in!',
             'token' => $token->plainTextToken
