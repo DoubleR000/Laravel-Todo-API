@@ -29,14 +29,14 @@ Sample register input:
 }
 ```
 
-`/api/logout` (POST) - deletes all API tokens of the authenticated user.
+`/api/logout` (POST) - deletes all API tokens of the authenticated user.  
 
 ### Todos
-`/api/todos` (GET) - gets a list of the user's Todos.
-`/api/todos` (POST) - creates a new Todo. Needs JSON input.
-`/api/todos/{todo-id}` (GET) - gets the specific Todo.
-`/api/todos/{todo-id}` (PUT) - updates the Todo's contents. Needs JSON input.
-`/api/todos/{todo-id}` (DELETE) - deletes the Todo.
+`/api/todos` (GET) - gets a list of the user's Todos.  
+`/api/todos` (POST) - creates a new Todo. Needs JSON input.  
+`/api/todos/{todo-id}` (GET) - gets the specific Todo.  
+`/api/todos/{todo-id}` (PUT) - updates the Todo's contents. Needs JSON input.  
+`/api/todos/{todo-id}` (DELETE) - deletes the Todo.  
 
 Sample Todo input:
 ```
