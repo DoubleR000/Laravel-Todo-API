@@ -19,11 +19,9 @@ class TodoPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Todo $todo): Response
+    public function view(User $user, Todo $todo): bool
     {
-        return $user->id === $todo->user_id
-            ? Response::allow()
-            : Response::deny('Invalid action.');
+        return $user->id === $todo->user_id;
     }
 
     /**
@@ -37,31 +35,25 @@ class TodoPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Todo $todo): Response
+    public function update(User $user, Todo $todo): bool
     {
-        return $user->id === $todo->user_id
-            ? Response::allow()
-            : Response::deny('Invalid action.');
+        return $user->id === $todo->user_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Todo $todo): Response
+    public function delete(User $user, Todo $todo): bool
     {
-        return $user->id === $todo->user_id
-            ? Response::allow()
-            : Response::deny('Invalid action.');
+        return $user->id === $todo->user_id;
     }
 
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Todo $todo): Response
+    public function restore(User $user, Todo $todo): bool
     {
-        return $user->id === $todo->user_id
-            ? Response::allow()
-            : Response::deny('Invalid action.');
+        return $user->id === $todo->user_id;
     }
 
     /**
