@@ -23,7 +23,7 @@ class StoreTodoRequest extends FormRequest
     {
         return [
             'title' => 'required_without:content|string|max:255',
-            'content' => 'required_without:title|string|max:255',
+            'content' => 'required_without:title|string|max:255'
         ];
     }
 }

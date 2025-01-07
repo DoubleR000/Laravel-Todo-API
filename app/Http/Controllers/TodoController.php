@@ -60,7 +60,7 @@ class TodoController extends Controller implements HasMiddleware
             ], 401);
         }
 
-        if (!auth('sanctum')->user()->can('view', $todo)) {
+        if (!auth('sanctum')->user()->can('own', $todo)) {
             return response()->json([
                 "message" => "Unauthorized action.",
             ], 401);
@@ -74,7 +74,20 @@ class TodoController extends Controller implements HasMiddleware
      */
     public function update(UpdateTodoRequest $request, Todo $todo)
     {
-        //
+
+        if (!auth('sanctum')->user()->can('own', $todo)) {
+            return response()->json([
+                "message" => "Unauthorized action.",
+            ], 401);
+        }
+
+        $data = $request->validated();
+        $todo->update($data);
+
+        return response()->json([
+            "message" => "Todo successfully updated!",
+            "todo" => $todo
+        ]);
     }
 
     /**
@@ -82,7 +95,17 @@ class TodoController extends Controller implements HasMiddleware
      */
     public function destroy(Todo $todo)
     {
-        //
+        if (!auth('sanctum')->user()->can('own', $todo)) {
+            return response()->json([
+                "message" => "Unauthorized action.",
+            ], 401);
+        }
+
+        $todo->delete();
+
+        return response()->json([
+            'message' => 'The post has been deleted'
+        ]);
     }
 
 }

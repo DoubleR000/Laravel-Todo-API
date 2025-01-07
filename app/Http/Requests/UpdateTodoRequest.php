@@ -11,7 +11,7 @@ class UpdateTodoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,8 @@ class UpdateTodoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required_without:content|string|max:255',
+            'content' => 'required_without:title|string|max:255'
         ];
     }
 }
